@@ -1,14 +1,15 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
 .footer {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 2em auto 0.5em;
     max-width: 960px;
     flex-direction: column;
     align-items: center;
 }
 
 .layout-footer {
-    bottom: 5px;
-    position: fixed;
     font-weight: normal !important;
     /* font-style: italic; */
     font-size: 15px;

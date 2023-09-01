@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Verbo } from './Verbo';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,19 @@ import { getAnalytics } from "firebase/analytics";
 export class AppComponent {
   title = 'memorizar-verbos-irregulares';
 
+  public exibirRespostasAutomaticamente: boolean = false;
+
   public opcaoSelecionada: number = 0;
   public verbos: Verbo[] = []
-  public verboSelecionado: any = new Verbo("INFITINITO", "PAST", "PASTPARTICIPLE", "TRANSLATION");
+  public verboSelecionado: Verbo | undefined;
   public anoAtual: number = new Date().getFullYear();
+  public exibirModalConfiguracoes: boolean = false;
 
   public exibirPast: boolean = false;
   public exibirPastParticiple: boolean = false;
   public exibirTranslation: boolean = false;
+
+  public formulario: FormGroup = this.iniciarFormulario();
 
   ngOnInit() {
     const firebaseConfig = {
@@ -34,10 +40,25 @@ export class AppComponent {
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
 
-    this.selecionarVerbos();
+    this.alterarVerboSelecionado();
+    this.gerarVerbo();
   }
 
-  public selecionarVerbos() {
+  public iniciarFormulario() {
+    
+    this.lerLocalStorage();
+
+    return new FormGroup({
+      exibirRespostas: new FormControl<boolean>(this.exibirRespostasAutomaticamente)
+    });
+  }
+
+  public lerLocalStorage() {
+    const storageExibirRespostasAutomaticamente = localStorage.getItem('exibirRespostasAutomaticamente');
+    this.exibirRespostasAutomaticamente = storageExibirRespostasAutomaticamente == 'true';
+  }
+
+  public alterarVerboSelecionado() {
     this.verbos = [
       new Verbo("	TO BE	", "	WAS/WERE	", "	BEEN	", "	SER, ESTAR	"),
       new Verbo("	TO BEAT	", "	BEAT	", "	BEAT	", "	DERROTAR	"),
@@ -134,11 +155,35 @@ export class AppComponent {
   }
 
   public gerarVerbo() {
-    this.exibirPast = false;
-    this.exibirPastParticiple = false;
-    this.exibirTranslation = false;
+    this.resetarRespostas();
 
     this.opcaoSelecionada = 0;
     this.verboSelecionado = this.verbos[Math.floor(Math.random() * this.verbos.length)];
+  }
+
+  public resetarRespostas() {
+    if (this.exibirRespostasAutomaticamente) {
+      this.exibirPast = true;
+      this.exibirPastParticiple = true;
+      this.exibirTranslation = true;
+    }
+    else {
+      this.exibirPast = false;
+      this.exibirPastParticiple = false;
+      this.exibirTranslation = false;
+    }
+  }
+
+  public salvarAlteracoesConfiguracoes() {
+    localStorage.clear();
+
+    const formExibirRespostasAutomaticamente = this.formulario.controls['exibirRespostas'].value ?? false;
+
+    localStorage.setItem('exibirRespostasAutomaticamente', formExibirRespostasAutomaticamente);
+
+    this.lerLocalStorage();
+
+    this.resetarRespostas();
+    this.exibirModalConfiguracoes = false;
   }
 }

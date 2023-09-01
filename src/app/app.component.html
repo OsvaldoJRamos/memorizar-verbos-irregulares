@@ -1,16 +1,25 @@
-<div class="toolbar" role="banner">
-  <img width="40" alt="Angular Logo"
-    src="https://cdn3.iconfinder.com/data/icons/education-and-learning-hexagon-2/128/24-512.png" />
-  <span class="titulo_principal">Memorizar Verbos Irregulares</span>
-</div>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-<div class="content" role="main">
+<div class="toolbar" role="banner">
+  <div class="toolbar_parte1">
+    <img width="40" alt="Angular Logo"
+      src="https://cdn3.iconfinder.com/data/icons/education-and-learning-hexagon-2/128/24-512.png" />
+    <span class="titulo_principal">Memorizar Verbos Irregulares</span>
+  </div>
+  <div class="toolbar_parte2" style="margin-right: 0.5em;">
+    <span class="material-symbols-outlined" (click)="exibirModalConfiguracoes = !exibirModalConfiguracoes">
+      settings
+    </span>
+  </div>
+</div>
+<div class="content" role="main" [class.container]="exibirModalConfiguracoes">
 
   <h2 class="titulo_secundario">Welcome</h2>
   <hr class="separator separator--dotter" />
   <div class="verbo">
     <div class="verbo2">
-      <div class="card-container" (click)="gerarVerbo()">
+      <div class="card-container" (click)="alterarVerboSelecionado()">
         <div class="card highlight-card card-small  fundo_botao_gerar_outro">
           <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678"
             viewBox="0 0 101.678 101.678">
@@ -28,16 +37,7 @@
               </g>
             </g>
           </svg>
-
-          <span>Clique para GERAR outro VERBO</span>
-
-          <!-- <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632"
-            viewBox="0 0 516.119 1083.632">
-            <title>Rocket Ship Smoke</title>
-            <path id="Path_40" data-name="Path 40"
-              d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z"
-              transform="translate(-147.025 -140.939)" fill="#f5f5f5" />
-          </svg> -->
+          <span>Clique para ALTERAR o VERBO</span>
         </div>
       </div>
     </div>
@@ -45,15 +45,10 @@
 
   <hr class="separator separator--dotter" />
 
-  <!-- <h2>Verbo Selecionado:</h2> -->
-
   <div style="margin-top: 2em;"></div>
-  <div class="card highlight-card card-small segundo-botao" (click)="gerarVerbo()">
-    <div>{{verboSelecionado.Infinitive}}</div>
+  <div class="card highlight-card card-small segundo-botao" (click)="alterarVerboSelecionado()">
+    <div>{{verboSelecionado?.Infinitive}}</div>
   </div>
-  <!-- <p>Clique nos botões abaixo para exibir o que desejar.</p> -->
-
-  <input type="hidden" #selection>
 
   <div class="card-container">
     <button class="card card-small" (click)="exibirPast = !exibirPast" tabindex="0">
@@ -64,7 +59,7 @@
     </button>
 
     <div class="terminal" *ngIf="exibirPast">
-      <pre>{{verboSelecionado.Past}}</pre>
+      <pre>{{verboSelecionado?.Past}}</pre>
     </div>
 
     <button class="card card-small" (click)="exibirPastParticiple = !exibirPastParticiple" tabindex="0">
@@ -75,7 +70,7 @@
     </button>
 
     <div class="terminal" *ngIf="exibirPastParticiple">
-      <pre>{{verboSelecionado.PastParticiple}}</pre>
+      <pre>{{verboSelecionado?.PastParticiple}}</pre>
     </div>
 
     <button class="card card-small" (click)="exibirTranslation = !exibirTranslation" tabindex="0">
@@ -86,9 +81,26 @@
     </button>
 
     <div class="terminal" *ngIf="exibirTranslation">
-      <pre>{{verboSelecionado.Translation}}</pre>
+      <pre>{{verboSelecionado?.Translation}}</pre>
     </div>
   </div>
 </div>
 
+<p-dialog header="Configurações" [(visible)]="exibirModalConfiguracoes"
+  [style]="{width: '100%',border: '1px solid black',borderRadius: '5px'}" styleClass="custom-dialog">
+  <div class="field-checkbox checkbox_formulario">
+    <form class="flex" [formGroup]="formulario">
+      <p-checkbox formControlName="exibirRespostas" value="true" [binary]="true"
+        inputId="exibirRespostas"></p-checkbox>
+      <label for="exibirRespostas"> Expandir respostas automaticamente</label>
+    </form>
+
+  </div>
+
+  <div class="card-container" (click)="salvarAlteracoesConfiguracoes()">
+    <div class="card highlight-card card-small btn_salvar_alteracoes">
+      <span class="btn_salvar_alteracoes">Salvar Alterações</span>
+    </div>
+  </div>
+</p-dialog>
 <router-outlet></router-outlet>

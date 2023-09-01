@@ -56,6 +56,17 @@
       background-color: #1976d2;
       color: white;
       font-weight: 600;
+      justify-content: space-between;
+  }
+
+  .toolbar_parte1 {
+      display: flex;
+      align-items: center;
+  }
+
+  .toolbar_parte2 {
+      display: flex;
+      align-items: center;
   }
 
   .toolbar img {
@@ -193,7 +204,6 @@
   .terminal {
       position: relative;
       width: 80%;
-      max-width: 600px;
       border-radius: 6px;
       padding-top: 45px;
 
@@ -298,11 +308,13 @@
       }
   }
 
-  @media screen and (max-width: 575px) {
-      svg#rocket-smoke {
-          display: none;
-          visibility: hidden;
+  @media screen and (min-width: 800px) {
+
+      .card-container>*:not(.circle-link),
+      .terminal {
+          width: 40em;
       }
+
   }
 
   span {
@@ -314,16 +326,6 @@
       border-radius: 1em;
   }
 
-  //   .verbo {
-  //       border-radius: 5em;
-  //       //   #ffff008a;
-  //       border-top-left-radius: 6em;
-  //       border-bottom-left-radius: 6em;
-  //       outline: dashed;
-  //       outline-offset: -2px;
-  //       outline-color: rgba(221, 0, 48, 0.658);
-  //   }
-
   .verbo2 {
       padding-left: 0%;
       padding-right: 0%;
@@ -331,27 +333,35 @@
       padding-bottom: 2%;
   }
 
-  //   ADASDKK
+  .container {
+      filter: blur(5px);
+  }
+
+  .checkbox_formulario {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+  }
+
+  .custom-dialog {
+      max-width: 90%;
+      border: 6px solid white !important;
+      border-radius: 18px !important;
+  }
+
+  .btn_salvar_alteracoes {
+      margin: 0 !important;
+      background-color: #11aa0c !important;
+  }
+
+  //hr
 
   $separator-size: 0.5em;
   $separator-border-style: solid;
   $separator-border-color: #1976d2;
   $separator-space-top: 1em;
   $separator-space-bottom: 1em;
-
-  .separator {
-      margin-top: $separator-space-top;
-      margin-bottom: $separator-space-bottom;
-      border: 0;
-  }
-
-  .separator--line {
-      border: 0;
-      border-bottom: $separator-size $separator-border-style $separator-border-color;
-
-      width: 0;
-      animation: separator-width 1s ease-out forwards;
-  }
 
   @keyframes separator-width {
       0% {
@@ -421,4 +431,12 @@
 
       width: 0;
       animation: separator-width 1.5s ease-out forwards;
+  }
+
+  .material-symbols-outlined {
+      font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
   }
