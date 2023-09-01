@@ -355,6 +355,16 @@
       background-color: #11aa0c !important;
   }
 
+  .btn_acao_verbo_fechado {
+    background: #a8c5e2a1;
+  }
+
+  .btn_acao_verbo_aberto {
+      background: #1976d2d5;
+      color: white;
+      font-weight: 600;
+  }
+
   //hr
 
   $separator-size: 0.5em;

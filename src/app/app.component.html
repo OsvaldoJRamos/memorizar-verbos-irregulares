@@ -51,10 +51,15 @@
   </div>
 
   <div class="card-container">
-    <button class="card card-small" (click)="exibirPast = !exibirPast" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
+    <button class="card card-small"
+      [ngClass]="{'btn_acao_verbo_fechado': !exibirPast, 'btn_acao_verbo_aberto' : exibirPast }"
+      (click)="exibirPast = !exibirPast" tabindex="0">
+      <span class="material-symbols-outlined" *ngIf="!exibirPast">
+        stat_minus_2
+      </span>
+      <span class="material-symbols-outlined" *ngIf="exibirPast">
+        stat_2
+      </span>
       <span>Past</span>
     </button>
 
@@ -62,10 +67,15 @@
       <pre>{{verboSelecionado?.Past}}</pre>
     </div>
 
-    <button class="card card-small" (click)="exibirPastParticiple = !exibirPastParticiple" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
+    <button class="card card-small"
+      [ngClass]="{'btn_acao_verbo_fechado': !exibirPastParticiple, 'btn_acao_verbo_aberto' : exibirPastParticiple }"
+      (click)="exibirPastParticiple = !exibirPastParticiple" tabindex="0">
+      <span class="material-symbols-outlined" *ngIf="!exibirPastParticiple">
+        stat_minus_2
+      </span>
+      <span class="material-symbols-outlined" *ngIf="exibirPastParticiple">
+        stat_2
+      </span>
       <span>Past Participle</span>
     </button>
 
@@ -73,10 +83,15 @@
       <pre>{{verboSelecionado?.PastParticiple}}</pre>
     </div>
 
-    <button class="card card-small" (click)="exibirTranslation = !exibirTranslation" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
+    <button class="card card-small"
+      [ngClass]="{'btn_acao_verbo_fechado': !exibirTranslation, 'btn_acao_verbo_aberto' : exibirTranslation }"
+      (click)="exibirTranslation = !exibirTranslation" tabindex="0">
+      <span class="material-symbols-outlined" *ngIf="!exibirTranslation">
+        stat_minus_2
+      </span>
+      <span class="material-symbols-outlined" *ngIf="exibirTranslation">
+        stat_2
+      </span>
       <span>Translation</span>
     </button>
 
@@ -90,8 +105,7 @@
   [style]="{width: '100%',border: '1px solid black',borderRadius: '5px'}" styleClass="custom-dialog">
   <div class="field-checkbox checkbox_formulario">
     <form class="flex" [formGroup]="formulario">
-      <p-checkbox formControlName="exibirRespostas" value="true" [binary]="true"
-        inputId="exibirRespostas"></p-checkbox>
+      <p-checkbox formControlName="exibirRespostas" value="true" [binary]="true" inputId="exibirRespostas"></p-checkbox>
       <label for="exibirRespostas"> Expandir respostas automaticamente</label>
     </form>
 
