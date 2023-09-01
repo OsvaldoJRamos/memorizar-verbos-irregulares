@@ -8,15 +8,24 @@
   }
 
   @font-face {
-    font-family: "CustomFont";
-    src: url("../DancingScript-Regular.ttf");
-    }
+      font-family: "CustomFont";
+      src: url("../DancingScript-Regular.ttf");
+  }
 
   .titulo_principal {
       font-family: "CustomFont";
       font-weight: normal !important;
       /* font-style: italic; */
-      font-size: 35px;
+      font-size: 22px;
+  }
+
+  .titulo_secundario {
+      margin-top: -0.4em;
+      margin-bottom: -0.1em;
+      font-family: "CustomFont";
+      font-weight: bold !important;
+      /* font-style: italic; */
+      font-size: 2em;
   }
 
   h1,
@@ -299,4 +308,118 @@
 
   span {
       display: inline-block !important;
+  }
+
+  .fundo_botao_gerar_outro {
+      background-color: #1976d2 !important;
+      border-radius: 1em;
+  }
+
+  //   .verbo {
+  //       border-radius: 5em;
+  //       //   #ffff008a;
+  //       border-top-left-radius: 6em;
+  //       border-bottom-left-radius: 6em;
+  //       outline: dashed;
+  //       outline-offset: -2px;
+  //       outline-color: rgba(221, 0, 48, 0.658);
+  //   }
+
+  .verbo2 {
+      padding-left: 0%;
+      padding-right: 0%;
+      padding-top: 1%;
+      padding-bottom: 2%;
+  }
+
+  //   ADASDKK
+
+  $separator-size: 0.5em;
+  $separator-border-style: solid;
+  $separator-border-color: #1976d2;
+  $separator-space-top: 1em;
+  $separator-space-bottom: 1em;
+
+  .separator {
+      margin-top: $separator-space-top;
+      margin-bottom: $separator-space-bottom;
+      border: 0;
+  }
+
+  .separator--line {
+      border: 0;
+      border-bottom: $separator-size $separator-border-style $separator-border-color;
+
+      width: 0;
+      animation: separator-width 1s ease-out forwards;
+  }
+
+  @keyframes separator-width {
+      0% {
+          width: 0;
+      }
+
+      100% {
+          width: 100%;
+      }
+  }
+
+  @mixin dot {
+      $dot-size: 7px;
+      content: "";
+      background-color: $separator-border-color;
+      display: block;
+      height: $dot-size;
+      width: $dot-size;
+      border-radius: 50%;
+  }
+
+  .separator--dots {
+      overflow: visible;
+      border: 0;
+      @include dot();
+      position: relative;
+
+      &:before {
+          @include dot();
+          position: absolute;
+          left: -32px;
+          animation: dot-move-left 1s ease-out forwards;
+      }
+
+      &:after {
+          @include dot();
+          position: absolute;
+          left: 32px;
+          animation: dot-move-right 1s ease-out forwards;
+      }
+  }
+
+  @keyframes dot-move-right {
+      0% {
+          left: 0;
+      }
+
+      100% {
+          left: 32px;
+      }
+  }
+
+  @keyframes dot-move-left {
+      0% {
+          left: 0;
+      }
+
+      100% {
+          left: -32px;
+      }
+  }
+
+
+  .separator--dotter {
+      border: 0;
+      border-bottom: $separator-size dotted $separator-border-color;
+
+      width: 0;
+      animation: separator-width 1.5s ease-out forwards;
   }
