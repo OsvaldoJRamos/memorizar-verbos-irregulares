@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Verbo } from './Verbo';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,19 @@ export class AppComponent {
   public exibirTranslation: boolean = false;
 
   ngOnInit() {
+    const firebaseConfig = {
+      apiKey: "AIzaSyCFyVieO_AzH_10d3mOepvjEFfSAXk3JQY",
+      authDomain: "verbos-irregulares-ba63a.firebaseapp.com",
+      projectId: "verbos-irregulares-ba63a",
+      storageBucket: "verbos-irregulares-ba63a.appspot.com",
+      messagingSenderId: "279878999353",
+      appId: "1:279878999353:web:24f251052677409b121ce8",
+      measurementId: "G-LQ09LZ7YYR"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
     this.selecionarVerbos();
   }
 
