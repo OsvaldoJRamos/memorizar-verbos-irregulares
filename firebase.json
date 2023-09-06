@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist\\memorizar-verbos-irregulares",
+    "public": "dist/memorizar-verbos-irregulares",
     "ignore": [
       "firebase.json",
       "**/.*",
