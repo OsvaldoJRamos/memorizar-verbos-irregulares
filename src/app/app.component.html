@@ -51,54 +51,20 @@
   </div>
 
   <div class="card-container">
-    <button class="card card-small"
-      [ngClass]="{'btn_acao_verbo_fechado': !exibirPast, 'btn_acao_verbo_aberto' : exibirPast }"
-      (click)="exibirPast = !exibirPast" tabindex="0">
-      <span class="material-symbols-outlined" *ngIf="!exibirPast">
-        stat_minus_2
-      </span>
-      <span class="material-symbols-outlined" *ngIf="exibirPast">
-        stat_2
-      </span>
-      <span>Past</span>
-    </button>
 
-    <div class="terminal" *ngIf="exibirPast">
-      <pre>{{verboSelecionado?.Past}}</pre>
+    <div class="terminal terminal_past" (click)="exibirPast = !exibirPast">
+      <pre [ngClass]="{'filter_blur': !exibirPast }">{{verboSelecionado?.Past}}</pre>
     </div>
 
-    <button class="card card-small"
-      [ngClass]="{'btn_acao_verbo_fechado': !exibirPastParticiple, 'btn_acao_verbo_aberto' : exibirPastParticiple }"
-      (click)="exibirPastParticiple = !exibirPastParticiple" tabindex="0">
-      <span class="material-symbols-outlined" *ngIf="!exibirPastParticiple">
-        stat_minus_2
-      </span>
-      <span class="material-symbols-outlined" *ngIf="exibirPastParticiple">
-        stat_2
-      </span>
-      <span>Past Participle</span>
-    </button>
-
-    <div class="terminal" *ngIf="exibirPastParticiple">
-      <pre>{{verboSelecionado?.PastParticiple}}</pre>
+    <div class="terminal terminal_past_participle" (click)="exibirPastParticiple = !exibirPastParticiple">
+      <pre [ngClass]="{'filter_blur': !exibirPastParticiple }">{{verboSelecionado?.PastParticiple}}</pre>
     </div>
 
-    <button class="card card-small"
-      [ngClass]="{'btn_acao_verbo_fechado': !exibirTranslation, 'btn_acao_verbo_aberto' : exibirTranslation }"
-      (click)="exibirTranslation = !exibirTranslation" tabindex="0">
-      <span class="material-symbols-outlined" *ngIf="!exibirTranslation">
-        stat_minus_2
-      </span>
-      <span class="material-symbols-outlined" *ngIf="exibirTranslation">
-        stat_2
-      </span>
-      <span>Translation</span>
-    </button>
-
-    <div class="terminal" *ngIf="exibirTranslation">
-      <pre>{{verboSelecionado?.Translation}}</pre>
+    <div class="terminal terminal_translation" (click)="exibirTranslation = !exibirTranslation">
+      <pre [ngClass]="{'filter_blur': !exibirTranslation }">{{verboSelecionado?.Translation}}</pre>
     </div>
   </div>
+
 </div>
 
 <p-dialog header="Configurações" [(visible)]="exibirModalConfiguracoes"
