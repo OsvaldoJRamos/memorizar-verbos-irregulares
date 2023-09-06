@@ -15,7 +15,6 @@
   .titulo_principal {
       font-family: "CustomFont";
       font-weight: normal !important;
-      /* font-style: italic; */
       font-size: 22px;
   }
 
@@ -24,25 +23,7 @@
       margin-bottom: -0.1em;
       font-family: "CustomFont";
       font-weight: bold !important;
-      /* font-style: italic; */
       font-size: 2em;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-      margin: 8px 0;
-  }
-
-  p {
-      margin: 0;
-  }
-
-  .spacer {
-      flex: 1;
   }
 
   .toolbar {
@@ -74,21 +55,6 @@
       margin: 0 16px;
   }
 
-  .toolbar #twitter-logo {
-      height: 40px;
-      margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-      height: 40px;
-      margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-      opacity: 0.8;
-  }
-
   .content {
       display: flex;
       margin: 82px auto 32px;
@@ -96,19 +62,6 @@
       max-width: 960px;
       flex-direction: column;
       align-items: center;
-  }
-
-  svg.material-icons {
-      height: 24px;
-      width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-      margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-      fill: #888;
   }
 
   .card-container {
@@ -135,10 +88,6 @@
       line-height: 24px;
   }
 
-  .card-container .card:not(:last-child) {
-      margin-right: 0;
-  }
-
   .card.card-small {
       height: 16px;
       width: 168px;
@@ -146,15 +95,6 @@
 
   .card-container .card:not(.highlight-card) {
       cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-      fill: rgb(105, 103, 103);
   }
 
   .card.highlight-card {
@@ -182,25 +122,6 @@
       position: absolute;
       left: -10px;
       top: -24px;
-  }
-
-  svg#rocket-smoke {
-      height: calc(100vh - 95px);
-      position: absolute;
-      top: 10px;
-      right: 180px;
-      z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-      color: #1976d2;
-      text-decoration: none;
-  }
-
-  a:hover {
-      color: #125699;
   }
 
   .terminal {
@@ -271,59 +192,6 @@
       margin: 0;
   }
 
-  .circle-link {
-      height: 40px;
-      width: 40px;
-      border-radius: 40px;
-      margin: 8px;
-      background-color: white;
-      border: 1px solid #eeeeee;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-      transform: translateY(-0.25rem);
-      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  .github-star-badge {
-      color: #24292e;
-      display: flex;
-      align-items: center;
-      font-size: 12px;
-      padding: 3px 10px;
-      border: 1px solid rgba(27, 31, 35, .2);
-      border-radius: 3px;
-      background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
-      margin-left: 4px;
-      font-weight: 600;
-  }
-
-  .github-star-badge:hover {
-      background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
-      border-color: rgba(27, 31, 35, .35);
-      background-position: -.5em;
-  }
-
-  .github-star-badge .material-icons {
-      height: 16px;
-      width: 16px;
-      margin-right: 4px;
-  }
-
-  svg#clouds {
-      position: fixed;
-      bottom: -160px;
-      left: -230px;
-      z-index: -10;
-      width: 1920px;
-  }
-
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
@@ -331,33 +199,6 @@
       .terminal {
           width: 100%;
       }
-
-      .card:not(.highlight-card) {
-          height: 16px;
-          margin: 8px 0;
-      }
-
-      .card.highlight-card span {
-          margin-left: 72px;
-      }
-
-      svg#rocket-smoke {
-          right: 120px;
-          transform: rotate(-5deg);
-      }
-  }
-
-  @media screen and (min-width: 800px) {
-
-      .card-container>*:not(.circle-link),
-      .terminal {
-          width: 40em;
-      }
-
-  }
-
-  span {
-      display: inline-block !important;
   }
 
   .fundo_botao_gerar_outro {

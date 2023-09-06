@@ -14,7 +14,6 @@ export class AppComponent {
 
   public exibirRespostasAutomaticamente: boolean = false;
 
-  public opcaoSelecionada: number = 0;
   public verbos: Verbo[] = []
   public verboSelecionado: Verbo | undefined;
   public anoAtual: number = new Date().getFullYear();
@@ -41,7 +40,6 @@ export class AppComponent {
     const analytics = getAnalytics(app);
 
     this.alterarVerboSelecionado();
-    this.gerarVerbo();
   }
 
   public iniciarFormulario() {
@@ -153,13 +151,6 @@ export class AppComponent {
       new Verbo("	TO WITHDRAW	", "	WITHDREW	", "	WITHDRAWN	", "	SACAR	"),
       new Verbo("	TO WRITE	", "	WROTE	", "	WRITTEN	", "	ESCREVER	")
     ]
-    this.verboSelecionado = this.verbos[Math.floor(Math.random() * this.verbos.length)];
-  }
-
-  public gerarVerbo() {
-    this.resetarRespostas();
-
-    this.opcaoSelecionada = 0;
     this.verboSelecionado = this.verbos[Math.floor(Math.random() * this.verbos.length)];
   }
 
