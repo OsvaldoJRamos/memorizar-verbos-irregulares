@@ -59,6 +59,8 @@ export class AppComponent {
   }
 
   public alterarVerboSelecionado() {
+    this.resetarRespostas();
+    
     this.verbos = [
       new Verbo("	TO BE	", "	WAS/WERE	", "	BEEN	", "	SER, ESTAR	"),
       new Verbo("	TO BEAT	", "	BEAT	", "	BEAT	", "	DERROTAR	"),
