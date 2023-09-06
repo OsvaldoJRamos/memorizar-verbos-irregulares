@@ -186,6 +186,8 @@
   }
 
   .terminal pre {
+      text-align: center;
+      white-space: normal;
       font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
       color: white;
       padding: 0 1rem 1rem;
@@ -197,9 +199,17 @@
 
       .card-container>*:not(.circle-link),
       .terminal {
-          width: 100%;
+          width: 22em;
       }
   }
+
+  @media screen and (min-width: 768px) {
+
+    .card-container>*:not(.circle-link),
+    .terminal {
+        width: 40em;
+    }
+}
 
   .fundo_botao_gerar_outro {
       background-color: #1976d2 !important;
