@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "builds",
+    "public": "dist\\memorizar-verbos-irregulares",
     "ignore": [
       "firebase.json",
       "**/.*",
