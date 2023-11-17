@@ -1,5 +1,7 @@
 # MemorizarVerbosIrregulares
 
+Aplicação feita 100% em Angular (sem uso de APIs) para ajudar no aprendizado do inglês através do treino de memorização de verbos irregulares.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
